@@ -39,17 +39,17 @@ define( 'WP_DROPZONE_MANAGER_PLUGIN_DROPZONE_5X', 'dropzone-5.7.0' );
 //$wp_dropzone_manager_plugin_dropzone_settings = (array) get_option( 'wp_dropzone_manager_plugin_dropzone_settings' );
 
 // Include weDevs Settings API wrapper class
-//require WP_JQUERY_MANAGER_PLUGIN_DIR_PATH . 'inc/settings-api.php';
+//require WP_DROPZONE_MANAGER_PLUGIN_DIR_PATH . 'inc/settings-api.php';
 
 // All filters
-add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'wp_dropzone_manager_plugin_add_action_links' );
+//add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'wp_dropzone_manager_plugin_add_action_links' );
 
 // All actions
 //add_action( 'admin_init', array( 'PAnD', 'init' ) );
 //add_action( 'admin_notices', 'wp_dropzone_manager_plugin_admin_notice' );
 
 // Add settings link to our plugin section on the plugin list page
-function wp_jquery_manager_plugin_add_action_links ( $links ) {
+function wp_dropzone_manager_plugin_add_action_links ( $links ) {
 	$plugin_links = array(
 		'<a href="' . WP_DROPZONE_MANAGER_PLUGIN_ADMIN_URL . '">Settings</a>',
 	);
@@ -74,10 +74,10 @@ function wp_dropzone_manager_plugin_activation() {
 		wp_die(
 			'<p>' .
 			sprintf(
-				__( 'This plugin can not be activated because either your WordPress instalation has an outdated/unsuported PHP version or you are using an outdated/old WordPress version.<br><br>This plugin requires a minimum of <strong>PHP 5.6 or greater</strong> and <strong>WordPress 4.9 or greater</strong>.<br><br> Your install:<br><strong>PHP: ' . PHP_VERSION .  '</strong><br><strong>WordPress: ' . $wp_version . '</strong><br><br>You need to update either one of them or both, before you are able to activate and use this plugin.<br>- <a href="https://wordpress.org/support/update-php/" target="_blank" rel="noopener noreferrer">Learn more about updating PHP</a><br>- <a href="https://wordpress.org/support/article/updating-wordpress/" target="_blank" rel="noopener noreferrer">Learn more about updating WordPress</a>', 'wp_jquery_manager_plugin' ),
+				__( 'This plugin can not be activated because either your WordPress installation has an outdated/unsupported PHP version or you are using an outdated/old WordPress version.<br><br>This plugin requires a minimum of <strong>PHP 5.6 or greater</strong> and <strong>WordPress 4.9 or greater</strong>.<br><br> Your install:<br><strong>PHP: ' . PHP_VERSION .  '</strong><br><strong>WordPress: ' . $wp_version . '</strong><br><br>You need to update either one of them or both, before you are able to activate and use this plugin.<br>- <a href="https://wordpress.org/support/update-php/" target="_blank" rel="noopener noreferrer">Learn more about updating PHP</a><br>- <a href="https://wordpress.org/support/article/updating-wordpress/" target="_blank" rel="noopener noreferrer">Learn more about updating WordPress</a>', 'wp_jquery_manager_plugin' ),
 				$php
 			)
-			. '</p> <a href="' . admin_url( 'plugins.php' ) . '">' . __( 'go back', 'wp_jquery_manager_plugin' ) . '</a>'
+			. '</p> <a href="' . admin_url( 'plugins.php' ) . '">' . __( 'go back', 'wp_dropzone_manager_plugin' ) . '</a>'
 		);
 	}
 }
@@ -86,6 +86,6 @@ function wp_dropzone_manager_plugin_activation() {
 //register_deactivation_hook( __FILE__, 'wp_dropzone_manager_plugin_deactivation' );
 
 function wp_dropzone_manager_plugin_deactivation() {
-	delete_option( 'wp_jquery_manager_plugin_jquery_settings' );
-	delete_option( 'wp_jquery_manager_plugin_jquery_migrate_settings' );
+	delete_option( 'wp_dropzone_manager_plugin_dropzone_settings' );
+	delete_option( 'wp_dropzone_manager_plugin_dropzone_migrate_settings' );
 }
