@@ -100,8 +100,8 @@ $dropzonejs = 'dist/dropzone.js';
 $dropzonecss = 'dist/dropzone.css';
 
 // Register jQuery in the head
-wp_register_script( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonejs, array(), null, false );
-wp_enqueue_style( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonecss, array(), null );
+wp_enqueue_script( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonejs, array(), null, true );
+wp_enqueue_style( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonecss, array(), null, true );
 
 // Deactivation
 //register_deactivation_hook( __FILE__, 'wp_dropzone_manager_plugin_deactivation' );
