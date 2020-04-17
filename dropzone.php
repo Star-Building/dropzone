@@ -91,17 +91,17 @@ if ( $wp_admin || $wp_customizer ) {
 return;
 }
 
-// Removing WP core jQuery, see https://github.com/Remzi1993/jquery-manager/issues/2 and https://github.com/WordPress/WordPress/blob/91da29d9afaa664eb84e1261ebb916b18a362aa9/wp-includes/script-loader.php#L226
+// Removing dropzone 
 wp_dequeue_script( 'dropzone' );
 wp_deregister_script( 'dropzone' );
 
-// Get jQuery version
+// Get current dropzone version
 $dropzonejs = 'dist/dropzone.js';
 $dropzonecss = 'dist/dropzone.css';
 
 // Register jQuery in the head
-wp_enqueue_script( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonejs, array(), null, true );
-wp_enqueue_style( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonecss, array(), null, true );
+//wp_enqueue_style( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonecss, array(), null, true );
+//wp_enqueue_script( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonejs, array(), null, true );
 
 // Deactivation
 //register_deactivation_hook( __FILE__, 'wp_dropzone_manager_plugin_deactivation' );
