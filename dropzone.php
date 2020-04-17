@@ -75,7 +75,7 @@ function wp_dropzone_manager_plugin_activation() {
 		wp_die(
 			'<p>' .
 			sprintf(
-				__( 'This plugin can not be activated because either your WordPress installation has an outdated/unsupported PHP version or you are using an outdated/old WordPress version.<br><br>This plugin requires a minimum of <strong>PHP 5.6 or greater</strong> and <strong>WordPress 4.9 or greater</strong>.<br><br> Your install:<br><strong>PHP: ' . PHP_VERSION .  '</strong><br><strong>WordPress: ' . $wp_version . '</strong><br><br>You need to update either one of them or both, before you are able to activate and use this plugin.<br>- <a href="https://wordpress.org/support/update-php/" target="_blank" rel="noopener noreferrer">Learn more about updating PHP</a><br>- <a href="https://wordpress.org/support/article/updating-wordpress/" target="_blank" rel="noopener noreferrer">Learn more about updating WordPress</a>', 'wp_jquery_manager_plugin' ),
+				__( 'This plugin can not be activated because either your WordPress installation has an outdated/unsupported PHP version or you are using an outdated/old WordPress version.<br><br>This plugin requires a minimum of <strong>PHP 5.6 or greater</strong> and <strong>WordPress 4.9 or greater</strong>.<br><br> Your install:<br><strong>PHP: ' . PHP_VERSION .  '</strong><br><strong>WordPress: ' . $wp_version . '</strong><br><br>You need to update either one of them or both, before you are able to activate and use this plugin.<br>- <a href="https://wordpress.org/support/update-php/" target="_blank" rel="noopener noreferrer">Learn more about updating PHP</a><br>- <a href="https://wordpress.org/support/article/updating-wordpress/" target="_blank" rel="noopener noreferrer">Learn more about updating WordPress</a>', 'wp_dropzone_manager_plugin' ),
 				$php
 			)
 			. '</p> <a href="' . admin_url( 'plugins.php' ) . '">' . __( 'go back', 'wp_dropzone_manager_plugin' ) . '</a>'
@@ -99,9 +99,9 @@ wp_deregister_script( 'dropzone' );
 $dropzonejs = 'dist/dropzone.js';
 $dropzonecss = 'dist/dropzone.css';
 
-// Register jQuery in the head
-//wp_enqueue_style( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonecss, array(), null, true );
-//wp_enqueue_script( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonejs, array(), null, true );
+// Register Dropzone
+//wp_enqueue_style( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonecss, array(), null);
+//wp_enqueue_script( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonejs, array(), null, true );//put in footer
 
 // Deactivation
 //register_deactivation_hook( __FILE__, 'wp_dropzone_manager_plugin_deactivation' );
