@@ -31,6 +31,7 @@ if ( defined('WP_CLI') && WP_CLI ) {
 // Config - CONSTANTS
 // http://php.net/manual/en/dir.constants.php & https://www.quora.com/Should-class-constants-be-all-uppercase-in-PHP
 // define( 'CONSTANT', $_SERVER['HTTP_HOST'] );
+define( 'WP_DROPZONE_MANAGER_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 
 // Dropzone versions, don't forget to update the files! .js and .min.js are automatically added accordingly at the end of the name/file.
 define( 'WP_DROPZONE_MANAGER_PLUGIN_DROPZONE_5X', 'dropzone-5.7.0' );
@@ -81,6 +82,26 @@ function wp_dropzone_manager_plugin_activation() {
 		);
 	}
 }
+
+
+
+// Default setting
+if ( $wp_admin || $wp_customizer ) {
+	// echo 'We are in the WP Admin or in the WP Customizer';
+return;
+}
+
+// Removing WP core jQuery, see https://github.com/Remzi1993/jquery-manager/issues/2 and https://github.com/WordPress/WordPress/blob/91da29d9afaa664eb84e1261ebb916b18a362aa9/wp-includes/script-loader.php#L226
+wp_dequeue_script( 'dropzone' );
+wp_deregister_script( 'dropzone' );
+
+// Get jQuery version
+$dropzonejs = 'dist/dropzone.js';
+$dropzonecss = 'dist/dropzone.css';
+
+// Register jQuery in the head
+wp_register_script( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonejs, array(), null, false );
+wp_enqueue_style( 'dropzone', WP_DROPZONE_MANAGER_PLUGIN_DIR_URL . $dropzonecss, array(), null );
 
 // Deactivation
 //register_deactivation_hook( __FILE__, 'wp_dropzone_manager_plugin_deactivation' );
